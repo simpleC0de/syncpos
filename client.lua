@@ -1,9 +1,16 @@
+local previousHealth = GetEntityHealth(GetPlayerPed(-1))
 Citizen.CreateThread(function()
+
     while true do
-        Citizen.Wait(2500)
-        TriggerServerEvent('syncpos:sync', GetEntityCoords(GetPlayerPed(-1)))
+        Citizen.Wait(1000)
+        health = GetEntityHealth(GetPlayerPed(-1))
+        if(health ~= previousHealth) then
+            TriggerServerEvent('syncpos:sync', GetEntityCoords(GetPlayerPed(-1)))
+        end
     end
+
 end)
+
 
 RegisterCommand('savepos', function(source, args, raw)
     TriggerServerEvent('syncpos:manualSave')
