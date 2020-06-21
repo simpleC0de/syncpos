@@ -38,7 +38,7 @@ AddEventHandler('syncpos:spawn', function()
         x, y, z = table.unpack(positions[steamId])
         TriggerClientEvent('syncpos:spawn', source, x, y, z)
     else
-        MySQL.Async.fetchScalar('SELECT lastpost FROM users WHERE identifier = "' .. steamId .. '";', function(result)
+        MySQL.Async.fetchScalar('SELECT lastpos FROM users WHERE identifier = "' .. steamId .. '";', function(result)
             
             array = json.decode(result)
             TriggerClientEvent('syncpos:spawn', source, array[1], array[2], array[3])
