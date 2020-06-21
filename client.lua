@@ -11,6 +11,15 @@ Citizen.CreateThread(function()
 
 end)
 
+Citizen.CreateThread(function()
+
+    while true do
+        Citizen.Wait((15) * 1000)
+        TriggerServerEvent('syncpos:sync', GetEntityCoords(GetPlayerPed(-1)))
+    end
+
+end)
+
 
 RegisterCommand('savepos', function(source, args, raw)
     TriggerServerEvent('syncpos:manualSave')
