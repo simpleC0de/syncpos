@@ -26,7 +26,7 @@ RegisterCommand('savepos', function(source, args, raw)
 end)
 
 
-RegisterNetEvent('syncpos:spawn')
+RegisterNetEvent('syncpos:clientspawn')
 AddEventHandler('syncpos:spawn', function(x, y, z)
 
     SetEntityCoords(GetPlayerPed(-1), x, y, z, 1, 0, 0, 1)
