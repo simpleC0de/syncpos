@@ -36,12 +36,12 @@ AddEventHandler('syncpos:spawn', function()
     cachedPos = positions[steamId]
     if(cachedPos ~= nil) then
         x, y, z = table.unpack(positions[steamId])
-        TriggerClientEvent('syncpos:spawn', source, x, y, z)
+        TriggerClientEvent('syncpos:clientspawn', source, x, y, z)
     else
         MySQL.Async.fetchScalar('SELECT lastpos FROM users WHERE identifier = "' .. steamId .. '";', {}, function(result)
             
             array = json.decode(result)
-            TriggerClientEvent('syncpos:spawn', source, array[1], array[2], array[3])
+            TriggerClientEvent('syncpos:clientspawn', source, array[1], array[2], array[3])
         
         end)
     end
